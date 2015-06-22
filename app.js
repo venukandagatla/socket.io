@@ -11,9 +11,21 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
 
+//io.on('connection', function (socket) {
+//  socket.emit('news', { hello: 'world' });
+//  socket.on('my other event', function (data) {
+//    console.log(data);
+//  });
+//});
+
 io.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+  io.emit('this', { will: 'be received by everyone'});
+
+  socket.on('private message', function (from, msg) {
+    console.log('I received a private message by ', from, ' saying ', msg);
+  });
+
+  socket.on('disconnect', function () {
+    io.emit('user disconnected');
   });
 });
