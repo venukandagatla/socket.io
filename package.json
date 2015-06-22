@@ -1,0 +1,10 @@
+{
+  "name": "first-socket-io-app",
+  "description": "a fine piece of express art",
+  "version": "0.0.1",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "express": "^4.12.4",
+    "socket.io": "^1.3.5"
+  }
+}
