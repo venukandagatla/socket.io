@@ -1,11 +1,14 @@
-var app = require('express')();
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
+var express = require('express');
 
-server.listen(80);
+var app = express();
+//var server = require('http').Server(app);
 
+
+var s = app.listen(80);
+var io = require('socket.io')(s);
+var router = express.Router();
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function (socket) {
